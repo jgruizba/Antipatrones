@@ -37,3 +37,37 @@ Integrantes:
 - Para evitar este anti patrón, lo primero es partir del inicio del código de manera correcta, y en caso de que este software este en mantenimiento, lo mejor es hacer una correcta documentación, recuperando el desarrollo de la estructura del software.
 
 - Durante las transiciones de las actualizaciones del software es necesario que las partes desactualizadas sean borradas o en su caso, reemplazadas con el fin de evitar el código muerto.
+
+## Antipatron Fantasma (Poltergeist)
+
+Los fantasmas son clases con responsabilidades y roles limitados que desempeñar en el sistema; por lo tanto, su ciclo de vida efectivo es bastante breve. Los fantasmas desordenan los diseños de software, creando abstracciones innecesarias; son excesivamente complejos, difíciles de entender y difíciles de mantener.
+
+Este anti-patrón es típico en los casos en que los diseñadores familiarizados con el modelado de procesos pero nuevos en el diseño orientado a objetos definen arquitecturas. En este anti-patrón, es posible identificar una o más clases de apariciones fantasmales que aparecen solo brevemente para iniciar alguna acción en otra clase más permanente. Normalmente los fantasmas se inventan como clases de controlador que existen sólo para invocar métodos de otras clases, generalmente en una secuencia predeterminada. Suelen ser obvios porque sus nombres a menudo contienen el sufijo _manager o _controller.
+
+El anti-patrón fantasma suele ser intencional por parte de algún arquitecto novato que realmente no comprende el concepto orientado a objetos. Las clases de poltergeist constituyen malos artefactos de diseño por tres razones clave:
+
+- Son innecesarios, por lo que desperdician recursos cada vez que "aparecen".
+- Son ineficientes porque utilizan varias rutas de navegación redundantes.
+- Se interponen en el camino del diseño orientado a objetos adecuado al saturar innecesariamente el modelo de objetos.
+
+### Sintomas y consecuencias
+
+- Rutas de navegación redundantes.
+- Asociaciones transitorias.
+- clases sin estado.
+- Clases y objetos temporales, de corta duración.
+- Clases de operación única que existen solo para "inicializar" o "invocar" otras clases a través de asociaciones temporales.
+- Clases con nombres de operaciones "similares a controles" como start_process_alpha.
+
+### Causas
+
+- Falta de arquitectura orientada a objetos. "Los diseñadores no conocen la orientación a objetos".
+Herramienta incorrecta para el trabajo.
+- Contrariamente a la opinión popular, el enfoque orientado a objetos no es necesariamente la solución adecuada para cada trabajo. Como decía una vez un cartel: "No hay forma correcta de hacer lo incorrecto".
+Es decir, si la orientación a objetos no es la herramienta adecuada, no hay una forma correcta de implementarla.
+- Desastre especificado. La administración a veces realiza compromisos de arquitectura durante el análisis de requisitos. Esto es inapropiado y, a menudo, conduce a problemas como este.
+
+### Solución
+Los Cazafantasmas resuelven los fantasmas eliminándolos por completo de la jerarquía de clases. Sin embargo, después de su eliminación, la funcionalidad que fue "proporcionada" por el poltergeist debe ser reemplazada. Esto es fácil con un simple ajuste para corregir la arquitectura.
+
+La clave es mover las acciones de control inicialmente encapsuladas en Poltergeist a las clases relacionadas que invocaron.
