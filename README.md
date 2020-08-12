@@ -8,9 +8,9 @@ Integrantes:
 
 ## Antipatrón Lava Flow
 
-Este antipatrón de diseño lava flow, ocurre cuando el software es recibido antes de su finalización o sin contar con las pruebas completas para su ejecucion y este al ser entregado, no puede modificar sus caracteristicas, imitando la analogia de cuando la lava que sale de un volcán se seca.
+<p align= "Justify">Este antipatrón de diseño lava flow, ocurre cuando el software es recibido antes de su finalización o sin contar con las pruebas completas para su ejecucion y este al ser entregado, no puede modificar sus caracteristicas, imitando la analogia de cuando la lava que sale de un volcán se seca.</p>
 
-Este antipatron se catacteriza por estar esparcido en versiones antiguas del software de manera inamovible, ya que no existe una clara identificación sobre como interactúa estos fragmentos del código con el software como tal, causa de una mal estructura y documentación 
+<p align= "Justify">Este antipatron se catacteriza por estar esparcido en versiones antiguas del software de manera inamovible, ya que no existe una clara identificación sobre como interactúa estos fragmentos del código con el software como tal, causa de una mal estructura y documentación </p>
 
 ### Síntomas de Software:
 
