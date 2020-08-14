@@ -177,3 +177,7 @@ Este anti-patrón se caracteriza por estar esparcido en versiones antiguas del s
 ### Solución
 
 - La refactorización es la mejor solución, pero una onza de prevención vale una libra de curación, por lo que el nombre, la estructura y las revisiones adecuadas para los estándares del equipo evitarán que su código se vuelva espaguetizado.  
+
+### Referencias
+
+- [https://sourcemaking.com/antipatterns/software-development-antipatterns](https://sourcemaking.com/antipatterns/software-development-antipatterns)
