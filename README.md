@@ -54,15 +54,21 @@ La solución implica una forma de refactorización. La clave es alejar el compor
 En el ejemplo que se muestra en la figura, la clase LIBRARY encapsula la suma total de todas las funciones del sistema. Por lo tanto, el primer paso es identificar conjuntos cohesivos de operaciones y atributos que representan contratos. En este caso, podríamos recopilar operaciones relacionadas con la gestión de catálogos, como Sort_Catalog y Search_Catalog.
 
 También podríamos identificar todas las operaciones y atributos relacionados con elementos individuales, como Print_Item, Delete_Item, etc.
+
 ![alt text](https://github.com/jgruizba/Antipatrones/blob/master/Blow_ex_sol_a.png)
+
 ![alt text](https://github.com/jgruizba/Antipatrones/blob/master/Blow_ex_sol_b.png)
+
 2. El segundo paso es buscar "hogares naturales" para estas colecciones de funcionalidad basadas en contratos y luego migrarlas allí. En este ejemplo, recopilamos operaciones relacionadas con catálogos y las migramos de la clase LIBRARY y las trasladamos a la clase CATALOG.
 
 Hacemos lo mismo con las operaciones y atributos relacionados con los artículos, moviéndolos a la clase ITEM. Esto simplifica la clase LIBRARY y hace que las clases ITEM y CATALOG sean más que simples tablas de datos encapsulados. El resultado es un mejor diseño orientado a objetos.
+
 ![alt text](https://github.com/jgruizba/Antipatrones/blob/master/Blow_ex_sol_c.png)
+
 3. El tercer paso es eliminar todas las asociaciones indirectas "acopladas a distancia" o redundantes. En el ejemplo, la clase ITEM está inicialmente acoplada de forma remota a la clase LIBRARY en que cada elemento realmente pertenece a un CATALOG, que a su vez pertenece a una LIBRARY.
 
 4. A continuación, cuando sea apropiado, migramos asociados a clases derivadas a una clase base común. En el ejemplo, una vez que se ha eliminado el acoplamiento lejano entre las clases LIBRARY y ITEM, debemos migrar los ITEM a los CATALOG, como se muestra en la siguiente figura.
+
 ![alt text](https://github.com/jgruizba/Antipatrones/blob/master/Blow_ex_sol_d.png)
 
 ## Anti-patrón Fantasma
@@ -98,8 +104,10 @@ Es decir, si la orientación a objetos no es la herramienta adecuada, no hay una
 
 ### Ejemplo
 
-Considere el ejemplo de un sistema de enlatado de melocotón en la figura siguiente.
+Considere el ejemplo de un sistema de enlatado de melocotón en la siguiente figura.
+
 ![alt text](https://github.com/jgruizba/Antipatrones/blob/master/Polt_ex_sol.png)
+
 Vemos que la clase PEACH_CANNER_CONTROLLER es un Fantasma porque:
 - Tiene rutas de navegación redundantes a todas las demás clases del sistema.
 - Todas sus asociaciones son transitorias.
@@ -107,6 +115,7 @@ Vemos que la clase PEACH_CANNER_CONTROLLER es un Fantasma porque:
 - Es una clase temporal de corta duración que aparece solo para invocar otras clases a través de asociaciones temporales.
 
 En este ejemplo, si eliminamos la clase fantasma, las clases restantes pierden la capacidad de interactuar. Ya no hay ningún orden de procesos. Por lo tanto, debemos colocar dicha capacidad de interacción en la jerarquía restante. Es necesario agregar ciertas operaciones a cada proceso de manera que las clases individuales interactúen y procesen los resultados.
+
 ![alt text](https://github.com/jgruizba/Antipatrones/blob/master/Polt_ex_pro.png)
 
 ### Solución
